@@ -14,27 +14,6 @@ If you haven't already:
 
 Complete the lab exercise *S2I and Template Lab for the App Modernization Dojo on OpenShift in a shared environment* by following the instructions [here](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
 
-### Step 1: Clone the Github repo that contains the code for the Plants by WebSphere app
-
-1.1  Login in [your Github account](https://github.com)
-
-1.2  In the search bar at the top left type in `app-modernization-plants-by-websphere-jee6`
-
-   ![Search results](images/ss0.png)
-
-1.3  Select the repository `IBMAppModernization\app-modernization-plants-by-websphere-jee6` and then click on the **Fork** icon
-
-1.4  Click the **Clone or download** button from your copy of the forked repo and copy the HTTPS URL to your clipboard
-
-   ![Clone URL](images/ss00.png)
-
-1.5  From the client terminal window clone the Git repo  with  the following commands  appending the HTTPS URL from your clipboard
-
-    ```text
-    git clone [HTTPS URL for NEW REPO]
-    cd app-modernization-plants-by-websphere-jee6
-    ```
-
 ### Step 2: Install Jenkins in your OpenShift cluster
 
 2.1 Open the OpenShift web console in your browser
@@ -62,7 +41,7 @@ Complete the lab exercise *S2I and Template Lab for the App Modernization Dojo o
    ```bash
    oc create -f openshift/templates/pbw-liberty-cicd-pipeline.yaml
    ```
-3.2 In your Web console browser tab make sure you're in the **pbw-liberty-mariadb** project (top left) and click on **Add to Project -> Browse Catalog** (top right)
+3.2 In your Web console browser tab make sure you're in your ***pbw-usernnn*** project (top left) and click on **Add to Project -> Browse Catalog** (top right)
 
 3.3 Select the **Other** category and then click **Plants by WebSphere on Liberty CI/CD Pipeline**
 
@@ -114,39 +93,39 @@ The BuildConfig for your pipeline is  already configured to be triggered by a Gi
 
 5.6  For the Payload URL paste in the URL you copied to your clipboard in step 5.2
 
-Change content type to **application/json**
+5.7 Change content type to **application/json**
 
-5.7 Change **SSL Verification** to **Disable**
+5.8 Change **SSL Verification** to **Disable**
 
-5.8  Accept the other defaults and click **Add webhook**
+5.9  Accept the other defaults and click **Add webhook**
 
    ![Add webhook](images/ss13.png)
 
-5.9 In the Github file browser drill down to *pbw-web/src/main/webapp/promo.xhtml*
+5.10 In the Github file browser drill down to *pbw-web/src/main/webapp/promo.xhtml*
 
-5.10  Click on the pencil icon to edit **promo.xhtml**  and on line 95 locate the price of the Bonsai Tree
+5.11  Click on the pencil icon to edit **promo.xhtml**  and on line 95 locate the price of the Bonsai Tree
 
-5.11  Change  `$30.00 each` to `<strike>$30.00</strike> $25.00 each`
+5.12  Change  `$30.00 each` to `<strike>$30.00</strike> $25.00 each`
 
    This will show the price of the Bonsai Tree as being reduced even more
 
    ![Reduce Bonsai price](images/ss14.png)
 
-5.12 At the bottom of the UI window add a commit message and click on **Commit changes**
+5.13 At the bottom of the UI window add a commit message and click on **Commit changes**
 
-5.13 Switch back to your OpenShift console and open the **pbw-cicd-pipeline**
+5.14 Switch back to your OpenShift console and open the **pbw-cicd-pipeline**
 
-5.14 Verify that your pipeline  starts building.
+5.15 Verify that your pipeline  starts building.
 
    ![new build](images/ss15.png)
 
-5.15 Once the pipeline has completed select **Applications -> Routes** from  the left navigation menu
+5.16 Once the pipeline has completed select **Applications -> Routes** from  the left navigation menu
 
    ![Routes](images/ss16.png)
 
-5.16 Click on the hostname link for **pbw-liberty-mariadb** to launch the Plants by WebSphere app
+5.17 Click on the hostname link for **pbw-liberty-mariadb** to launch the Plants by WebSphere app
 
-5.17 Verify that the price of the bonzai tree has changed.
+5.18 Verify that the price of the bonzai tree has changed.
 
   ![Price reduced](images/ss17.png)
 
