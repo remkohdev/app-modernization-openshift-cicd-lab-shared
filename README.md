@@ -8,6 +8,12 @@
 
 In this lab you will  be connecting your Git repository with the Plants by WebSphere app to a Continuous Integration/Continuous Deployment pipeline built with Jenkins that will deploy to an OpenShift cluster.
 
+## Setup
+
+If you haven't already:
+
+Complete the lab exercise *S2I and Template Lab for the App Modernization Dojo on OpenShift in a shared environment* by following the instructions [here](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
+
 ### Step 1: Clone the Github repo that contains the code for the Plants by WebSphere app
 
 1.1  Login in [your Github account](https://github.com)
@@ -49,11 +55,6 @@ In this lab you will  be connecting your Git repository with the Plants by WebSp
 
    ![Running](images/ss2.png)
 
-2.7 From a terminal run the following command to give Jenkins Service Account push access to the internal container registry
-
-   ```bash
-   oc policy add-role-to-user system:image-builder system:serviceaccount:pbw-liberty-mariadb:jenkins
-   ```
 ### Step 3: Create Pipeline from a template
 
 3.1  From the terminal run the following command to install the Plants by WebSphere pipeline template (note: you need to be in the top level folder of the cloned  Plants by WebSphere GitHub repo i.e. **app-modernization-plants-by-websphere-jee6**
