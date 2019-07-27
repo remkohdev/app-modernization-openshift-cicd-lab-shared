@@ -12,7 +12,10 @@ In this lab you will  be connecting your Git repository with the Plants by WebSp
 
 If you haven't already:
 
-Complete the lab exercise *S2I and Template Lab for the App Modernization Dojo on OpenShift in a shared environment* by following the instructions [here](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
+Complete either one of these lab exercises:
+
+ - [Working with Templates](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
+ - [Working with S2I and Templates](https://github.com/IBMAppModernization/app-modernization-openshift-s2i-templates-lab-shared)
 
 ### Step 2: Install Jenkins in your OpenShift cluster
 
@@ -39,7 +42,7 @@ Complete the lab exercise *S2I and Template Lab for the App Modernization Dojo o
 3.1  From the terminal run the following command to install the Plants by WebSphere pipeline template (note: you need to be in the top level folder of the cloned  Plants by WebSphere GitHub repo i.e. **app-modernization-plants-by-websphere-jee6**
 
    ```bash
-   oc create -f openshift/templates/pbw-liberty-cicd-pipeline.yaml
+   oc create -f openshift/templates/cicd/pbw-liberty-cicd-pipeline.yaml
    ```
 3.2 In your Web console browser tab make sure you're in your ***pbw-usernnn*** project (top left) and click on **Add to Project -> Browse Catalog** (top right)
 
