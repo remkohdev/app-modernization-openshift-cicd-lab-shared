@@ -132,6 +132,18 @@ The BuildConfig for your pipeline is  already configured to be triggered by a Gi
 
   ![Price reduced](images/ss17.png)
 
+### Clean up
+
+Run the following commands from the terminal to delete the resources you created:
+
+```
+oc delete all,secrets --selector template=mariadb-ephemeral-template
+oc delete all -selector app=pbw-liberty-mariadb
+oc delete all,secrets,configmap,rolebinding,serviceaccount  --selector app=jenkins-ephemeral
+oc delete serviceinstance --all
+```
+
+
 ## Summary
 
 You created a Jenkins pipeline from within OpenShift to automatically build and deploy an app that has been updated in Github .
