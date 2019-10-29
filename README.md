@@ -138,7 +138,7 @@ Run the following commands from the terminal to delete the resources you created
 
 ```
 oc delete all,secrets --selector template=mariadb-ephemeral-template
-oc delete all -selector app=pbw-liberty-mariadb
+oc delete all --selector app=pbw-liberty-mariadb
 oc delete all,secrets,configmap,rolebinding,serviceaccount  --selector app=jenkins-ephemeral
 oc delete serviceinstance --all
 ```
