@@ -2,11 +2,11 @@
 
 ## Lab - Automated updates of containerized applications from SCM commits
 
-### Creating a CI/CD Pipeline for deployment to OpenShift  using Jenkins
+### Creating a CI/CD Pipeline for deployment to OpenShift using Jenkins
 
 ## Overview
 
-In this lab you will  be connecting your Git repository with the Plants by WebSphere app to a Continuous Integration/Continuous Deployment pipeline built with Jenkins that will deploy to an OpenShift cluster.
+In this lab you will be connecting your Git repository with the Plants by WebSphere app to a Continuous Integration/Continuous Deployment pipeline built with Jenkins that will deploy to an OpenShift cluster.
 
 ## Setup
 
@@ -14,8 +14,8 @@ If you haven't already:
 
 Complete either one of these lab exercises:
 
- - [Working with Templates](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
- - [Working with S2I and Templates](https://github.com/IBMAppModernization/app-modernization-openshift-s2i-templates-lab-shared)
+- [Working with Templates](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
+- [Working with S2I and Templates](https://github.com/IBMAppModernization/app-modernization-openshift-s2i-templates-lab-shared)
 
 ### Step 2: Install Jenkins in your OpenShift cluster
 
@@ -44,6 +44,7 @@ Complete either one of these lab exercises:
    ```bash
    oc create -f openshift/templates/cicd/pbw-liberty-cicd-pipeline.yaml
    ```
+
 3.2 In your Web console browser tab make sure you're in your ***pbw-usernnn*** project (top left) and click on **Add to Project -> Browse Catalog** (top right)
 
 3.3 Select the **Other** category and then click **Plants by WebSphere on Liberty CI/CD Pipeline**
@@ -136,14 +137,15 @@ The BuildConfig for your pipeline is  already configured to be triggered by a Gi
 
 Run the following commands from the terminal to delete the resources you created:
 
-```
+```text
 oc delete all,secrets --selector template=mariadb-ephemeral-template
 oc delete all --selector app=pbw-liberty-mariadb
+oc get secrets | awk '/mariadb-ephemeral/ {print $1}' | xargs oc delete secret
+oc get servicebinding | awk '/mariadb-ephemeral/ {print $1}' | xargs oc delete servicebinding
 oc delete all,secrets,configmap,rolebinding,serviceaccount  --selector app=jenkins-ephemeral
 oc delete serviceinstance --all
 ```
 
-
 ## Summary
 
-You created a Jenkins pipeline from within OpenShift to automatically build and deploy an app that has been updated in Github .
+You created a Jenkins pipeline from within OpenShift to automatically build and deploy an app that has been updated in Github.
