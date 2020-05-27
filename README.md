@@ -1,1 +1,1 @@
-Openshift CICD Lab hosted here: blah blah
+Openshift CICD Lab hosted here: https://ibm-developer.gitbook.io/openshift-cicd-jenkins/
