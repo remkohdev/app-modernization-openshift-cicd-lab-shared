@@ -14,28 +14,28 @@ If you haven't already:
 
 Complete either one of these lab exercises:
 
- - [Working with Templates](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
- - [Working with S2I and Templates](https://github.com/IBMAppModernization/app-modernization-openshift-s2i-templates-lab-shared)
+- [Working with Templates](https://github.com/IBMAppModernization/app-modernization-openshift-templates-lab-shared)
+- [Working with S2I and Templates](https://github.com/IBMAppModernization/app-modernization-openshift-s2i-templates-lab-shared)
 
- ### Step 1: Fork the Github repo that contains the code for the Plants by WebSphere app
+### Step 1: Fork the Github repo that contains the code for the Plants by WebSphere app
 
  1.1 From your terminal go back to your home directory
 
-   ```
-    cd ~
+   ```bash
+   cd ~
    ```
 
  1.2 Go to the folder where you cloned the Plants by WebSphere app in the previous lab
 
-   ```
-    cd app-modernization-plants-by-websphere-jee6
+   ```bash
+   cd app-modernization-plants-by-websphere-jee6
    ```
 
  1.3 Use the `hub` utility to fork the Plants by WebSphere repo to your own Github account
 
-    ```
-     hub fork –remote-name origin
-    ```
+   ```bash
+   hub fork -remote-name origin
+   ```
 
  1.4 Enter your Github credentials when prompted
 
@@ -120,7 +120,7 @@ Now you'll configure Github to trigger your pipeline whenever code is committed.
 
    This will show the price of the Bonsai Tree as being reduced even more
 
-   ![Reduce Bonsai price](images/ss10.png)
+   ![Reduce Bonsai price](images/ss9.png)
 
 4.10 At the bottom of the UI window add a commit message and click on **Commit changes**
 
@@ -131,9 +131,10 @@ Now you'll configure Github to trigger your pipeline whenever code is committed.
 4.13 When the pipeline is finish deploying, launch the app to verify the change you made.
 
 4.14 .Run the following command in  the terminal to get the URL of your deployed app
-```
-  oc get route pbw-liberty-mariadb  --template='http://{{ .spec.host }}'
-````
+
+   ```bash
+   oc get route pbw-liberty-mariadb  --template='http://{{ .spec.host }}'
+   ```
 
 4.15 Enter the URL in your browser's address bar and verify that the price of the Bonsai tree has been reduced.
 
@@ -143,7 +144,7 @@ Now you'll configure Github to trigger your pipeline whenever code is committed.
 
 Run the following commands from the terminal to delete the resources you created:
 
-```
+```bash
 oc delete all,secrets --selector template=mariadb-ephemeral-template
 oc delete all --selector app=pbw-liberty-mariadb
 ```
